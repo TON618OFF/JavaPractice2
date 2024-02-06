@@ -15,8 +15,8 @@ public class Main {
         out.println("Для расчёта ИМТ (Индекса Массы Тела) нам необходимо запросить ваши параметры роста в квадрате и веса: \n");
         System.out.println("Для расчёта ИМТ (Индекса Массы Тела) нам необходимо запросить ваши параметры: \n");
 
-        System.out.println("Введите свой рост (в сантиметрах): ");
-        int height = in.nextInt();
+        System.out.println("Введите свой рост (в метрах, через запятую): ");
+        double height = in.nextDouble();
 
         System.out.println("Введите свой вес: ");
         int weight = in.nextInt();
@@ -24,10 +24,10 @@ public class Main {
         System.out.println("Введите свой возраст: ");
         byte age = in.nextByte();
 
-        double DCI = (weight * 10) + (height * 6.25) - (age * 5 + 5);
+        double DCI = (weight * 10) + (height * 100 * 6.25) - (age * 5 + 5);
 
         System.out.println("Введённые пользователем параметры тела: \n" +
-                "1. Рост: " + height + " сантиметров\n" +
+                "1. Рост: " + height + " метров\n" +
                 "2. Вес: " + weight + " килограмм\n" +
                 "3. Возраст: " + age + " лет\n\n");
 
@@ -36,13 +36,13 @@ public class Main {
                 "2. Вес: " + weight + " килограмм\n" +
                 "3. Возраст: " + age + " лет\n");
 
-        int IMT = weight/(height * height);
+        double IMT = weight/(height * height);
 
         System.out.println("Ваш индекс массы тела имеет значение: " + IMT + ".\n\n");
 
         out.println("Ваш индекс массы тела имеет значение: " + IMT + ".\n\n");
 
-        double perfect_weight = height - 100;
+        double perfect_weight = (height * 100) - 100;
 
         if (IMT > 24.9)
         {
@@ -60,7 +60,7 @@ public class Main {
             out.println("Ваш вес находится в пределах нормы. \nИдеальный вес: " + perfect_weight + ". \nРекомендуемый дневной прием калорий: " + DCI + ".\n\n");
         }
 
-        double HB = 655.1 + (9.6 * weight) + (1.85 * height) - (age * 4.68);
+        double HB = 655.1 + (9.6 * weight) + (1.85 * height * 100) - (age * 4.68);
         System.out.println("Дневная норма калорий: " + HB + ".");
         out.println("Дневная норма калорий: " + HB + ".");
 
